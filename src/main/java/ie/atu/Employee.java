@@ -28,12 +28,11 @@ public class Employee {
     }
 
     public void setUsr_name(String usr_name) {
-        String buffer = usr_name;
-
-        if(buffer.toCharArray().length < 5 && buffer.toCharArray().length > 22){
-            throw new IllegalArgumentException("INVALID NAME, MUST BE BETWEEN 5-22 CHARACTER");
-        } else {
+        if(usr_name.toCharArray().length >= 5 && usr_name.toCharArray().length <= 22){
             this.usr_name = usr_name;
+        } else {
+
+            throw new IllegalArgumentException("INVALID NAME, MUST BE BETWEEN 5-22 CHARACTER");
         }
 
     }
@@ -43,12 +42,16 @@ public class Employee {
     }
 
     public void setUsr_ppsid(String usr_ppsid) {
-        String buffer = usr_ppsid;
-
-        if(buffer.toCharArray().length < 6 && buffer.toCharArray().length > 6){
-            throw new IllegalArgumentException("INVALID PPS ID, CANNOT BE LESS/GREATER THAN 6 DIGITS");
-        } else {
+        if(usr_ppsid.length() == 6){
             this.usr_ppsid = usr_ppsid;
+        }
+
+        else {
+            if(usr_ppsid.length() < 6){
+                throw new IllegalArgumentException("INVALID PPS ID, CANNOT BE LESS THAN 6 DIGITS");
+            } else {
+                throw new IllegalArgumentException("INVALID PPS ID, CANNOT BE GREATER THAN 6 DIGITS");
+            }
         }
     }
 
@@ -57,12 +60,14 @@ public class Employee {
     }
 
     public void setUsr_phone(String usr_phone) {
-        String buffer = usr_phone;
-
-        if(buffer.length() < 11 && buffer.length() > 11){
-            throw new IllegalArgumentException("PHONE NUMBER INVALID, CANNOT BE LESS/GREATER THAN 11 DIGITS");
-        } else {
+        if(usr_phone.length() == 11){
             this.usr_phone = usr_phone;
+        } else {
+            if(usr_phone.length() < 11){
+                throw new IllegalArgumentException("PHONE NUMBER INVALID, CANNOT BE LESS THAN 11 DIGITS");
+            } else {
+                throw new IllegalArgumentException("PHONE NUMBER INVALID, CANNOT BE GREATER THAN 11 DIGITS");
+            }
         }
     }
 
@@ -71,9 +76,7 @@ public class Employee {
     }
 
     public void setUsr_gender(String usr_gender) {
-        String buffer = usr_gender;
-
-        switch (buffer){
+        switch (usr_gender){
             case "male":
             case "Male":
             case "MALE":    this.usr_gender = "male";
@@ -98,15 +101,15 @@ public class Employee {
         String buffer = usr_employ_type;
 
         switch(buffer){
-            case "full":
-            case "Full":
-            case "FULL":    this.usr_employ_type = "full-time";
+            case "full-time":
+            case "Full-time":
+            case "FULL-TIME":    this.usr_employ_type = "full-time";
                 break;
-            case "part":
-            case "Part":
-            case "PART":    this.usr_employ_type = "part-time";
+            case "part-time":
+            case "Part-time":
+            case "PART-TIME":    this.usr_employ_type = "part-time";
                 break;
-            default:    throw new IllegalArgumentException("INVALID INPUT, PLEASE ENTER 'FULL' OR 'PART'");
+            default:    throw new IllegalArgumentException("INVALID INPUT, PLEASE ENTER 'FULL-TIME' OR 'PART-TIME'");
         }
     }
 

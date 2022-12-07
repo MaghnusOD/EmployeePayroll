@@ -4,7 +4,7 @@ on:
 
 jobs:
   build:
-    runs-on: Uduntu-latest
+    runs-on: uduntu-latest
 
     steps:
       - uses: actions/checkout@v3
